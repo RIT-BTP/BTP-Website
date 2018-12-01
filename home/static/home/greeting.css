@@ -1,0 +1,16 @@
+body {
+    background-color: rgb(243, 224, 139);
+}
+div {
+    padding-top: 1rem;
+}
+button{
+    background-color: #4CAF50;
+    border: none;
+    box-shadow: .5rem;
+    color: orange;
+    text-align: center;
+    text-decoration: overline;
+    display: inline-block;
+    font-size: 1rem;
+}

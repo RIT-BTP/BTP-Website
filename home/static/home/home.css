@@ -1,0 +1,22 @@
+body {
+    background-color: green
+}
+div {
+    padding-top: 1rem
+}
+p{
+    border: .5rem;
+    border-style: solid;
+    border-width: 0.5rem;
+    border-color: brown;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 2rem;
+    color: azure;
+    text-indent: 1rem
+}
+h1{
+    text-align: center;
+    color: purple;
+    text-decoration: overline;
+    text-decoration-color: aqua;
+}
