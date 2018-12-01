@@ -7,6 +7,8 @@ from . import forms
 def home(request):
 	return render(request, 'home/home.html')
 
+def hehe(request):
+    return render(request, 'home/hehe.html')
 
 class greeting(TemplateView):
     template_name = 'home/greeting.html'
