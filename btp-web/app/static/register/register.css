@@ -21,20 +21,19 @@ body {
 
 #users {
     font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
-    border-collapse: collapse;
-    border-radius: 2rem;
+    border-collapse: separate;
+    //border-radius: 2rem;
     width: 100%;
   }
   
 #users td, #users th {
     /* border: 1px solid #ddd; */
     padding: 8px;
-    
 }
 
 #users tr:nth-child(even){background-color: whitesmoke;}
 #users tr:nth-child(odd){background-color: white;}
-#users tr:last-child {border-bottom-left-radius: 2rem; border-bottom-right-radius: 2rem;}
+#users td:last-child{border-bottom-right-radius: 2rem; border-bottom-left-radius: 2rem;}
 
 #users tr:hover {background-color: lightgrey;}
 
