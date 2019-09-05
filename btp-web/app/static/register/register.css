@@ -34,7 +34,8 @@ body {
 
 #users tr:nth-child(even){background-color: whitesmoke;}
 #users tr:nth-child(odd){background-color: white;}
-#users tr:last-child {border-bottom-left-radius: 2rem; border-bottom-right-radius: 2rem;}
+#users tr:last-child > td {border-bottom: none;}
+//#users tr:last-child {border-bottom-left-radius: 2rem; border-bottom-right-radius: 2rem;}
 
 #users tr:hover {background-color: lightgrey;}
 
