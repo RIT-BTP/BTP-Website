@@ -1,26 +1,54 @@
-
 from flask import Flask, request, redirect, render_template, url_for, flash
 from flask_sqlalchemy import SQLAlchemy
 import os
 
 app = Flask(__name__)
 
-app.config.from_object(os.environ['APP_SETTINGS'])
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config.from_object(os.environ["APP_SETTINGS"])
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 db = SQLAlchemy(app)
 
 from models import tmpUsers
-from forms import RegistrationForm
+from forms import RegistrationForm, LoginForm
+from functions import user_check
+
 
 @app.route("/")
 def root():
-    return redirect(url_for('register'))
+    return redirect(url_for("login"))
 
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    form = RegistrationForm(request.form)
+@app.route("/login", methods=['GET','POST'])
+def login():
+    failed = request.args.get('failed')
+    form = LoginForm(request.form)
     if request.method == 'POST' and form.validate():
-        user = tmpUsers.insert(name=form.username.data)
-        flash('Thanks for registering')
-        return redirect(url_for('root'))
-    return render_template('register/register.html', form=form)
+        if not user_check(form.username.data):
+            return redirect(url_for('login', failed=True))
+        #check
+        flash("Logged In")
+        return redirect(url_for("registeredlist"))
+    return render_template('auth/login.html', form=form, failed_login=failed)
+
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    failed = request.args.get('failed')
+    form = RegistrationForm(request.form)
+    if request.method == "POST" and form.validate():
+        if user_check(form.username.data):
+            return redirect(url_for('register', failed=True))
+        tmpUsers.insert(name=form.username.data)
+        flash("Thanks for registering")
+        return redirect(url_for("registeredlist"))
+    return render_template("register/register.html", form=form, failed_registration=failed)
+
+
+@app.route("/registeredlist", methods=["GET"])
+def registeredlist():
+    users = tmpUsers.get()
+    users = [user.name for user in users]
+    print(users)
+    return render_template("register/list.html", users=users)
+
+@app.route("/home", method=["GET"])
+def home():
+    return render_template("")

@@ -1,17 +1,59 @@
-.background {
+body {
     padding-top: 1rem;
-    background-image: url(saunders.jpg);
+    background-image: url(../saunders.jpg);
     width: 100%;
     height: 100%;
     object-fit: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     position: relative;
 }
 
-.container {
-    padding: 12rem;
+#users {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    border-radius: 2rem;
+    width: 100%;
+  }
+  
+#users td, #users th {
+    /* border: 1px solid #ddd; */
+    padding: 8px;
+    
+}
+
+#users tr:nth-child(even){background-color: whitesmoke;}
+#users tr:nth-child(odd){background-color: white;}
+#users tr:last-child {border-bottom-left-radius: 2rem; border-bottom-right-radius: 2rem;}
+
+#users tr:hover {background-color: lightgrey;}
+
+#users th {
+    padding-top: 12px;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+.alert {
+  width: 50%;
+  margin-left: 25%;
+  max-width: 40rem;
+}
+
+.col-sm {
+  padding-top: 5rem;
+  position: fixed;
+}
+
+.table {
+    background-color: white;
+    border-radius: 2rem;
 }
 
 .content {
