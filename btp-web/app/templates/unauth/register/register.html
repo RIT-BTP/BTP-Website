@@ -1,16 +1,16 @@
 {% from "_formhelpers.html" import render_field %}
-{% extends 'base.html' %}
+{% extends 'unauth/base.html' %}
 
 {% block head %}
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>Home</title>
-<link rel="stylesheet" type="text/css" media="screen" href="static/auth/login.css" />
-<script src="static/auth/login.js"></script>
+<title>Register</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" media="screen" href="static/register/register.css" />
 {% endblock %}
 
 {% block body %}
-{%if failed_login%}
+{%if failed_registration%}
 <div class="alert alert-danger alert-dismissible fade show in" role="alert">
         <strong>Holy guacamole!</strong> You should check in on some of those fields below.
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -25,11 +25,8 @@
     <form method=post class="content">
       <dl>
         {{ render_field(form.username) }}
-        {{render_field(form.password)}}
       </dl>
-      <p><input type=submit value=Login class="btn"></p>
-      <H5>No Account?</H5s>
-      <button id='register' class="btn" type="button" onclick="window.location.href='{{ url_for( 'register' ) }}';">Register</button>
+      <p><input type=submit value=Register class="btn">
     </form>
   </div>
   <div class="col-sm">

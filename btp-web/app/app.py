@@ -27,7 +27,7 @@ def login():
         #check
         flash("Logged In")
         return redirect(url_for("registeredlist"))
-    return render_template('auth/login.html', form=form, failed_login=failed)
+    return render_template('unauth/login/login.html', form=form, failed_login=failed)
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -39,7 +39,7 @@ def register():
         tmpUsers.insert(name=form.username.data)
         flash("Thanks for registering")
         return redirect(url_for("registeredlist"))
-    return render_template("register/register.html", form=form, failed_registration=failed)
+    return render_template("unauth/register/register.html", form=form, failed_registration=failed)
 
 
 @app.route("/registeredlist", methods=["GET"])
@@ -47,8 +47,8 @@ def registeredlist():
     users = tmpUsers.get()
     users = [user.name for user in users]
     print(users)
-    return render_template("register/list.html", users=users)
+    return render_template("unauth/register/list.html", users=users)
 
-@app.route("/home", method=["GET"])
+@app.route("/home", methods=["GET"])
 def home():
-    return render_template("")
+    return render_template("auth/home/home.html")
